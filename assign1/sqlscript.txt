@@ -1,0 +1,24 @@
+// Used to retrieve a list of tables in a database that have a name matching the pattern 'statuses'
+SHOW TABLES LIKE 'statuses';
+
+// Checks if the table exists in the database and if it doesnt exist create a new table
+CREATE TABLE IF NOT EXISTS `statuses` (
+    `statuscode` varchar(5) NOT NULL,
+    `status` varchar(500) NOT NULL,
+    `share` enum('public','private','friends') NOT NULL,
+    `date` date NOT NULL,
+    `perm` set('Like','Comment','Share') NOT NULL,
+    PRIMARY KEY (`statuscode`)
+);
+
+// selects all the data from the table statuses that matches the form search
+SELECT * FROM statuses WHERE status LIKE '%$searchString%';
+
+// selects all the data from the table statuses that matches the form search
+SELECT COUNT(*) FROM statuses WHERE statuscode = '$fmstatcode';
+
+// inserts the data from the form into the table statuses 
+INSERT INTO statuses (statuscode, status, share, date, perm) VALUES ('$fmstatcode', '$fmstat', '$fmshare', '$fmdate', '$fmperm');
+
+// deletes the table statuses
+DROP TABLE statuses;
