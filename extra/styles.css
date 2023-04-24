@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Mali&family=Zen+Tokyo+Zoo&display=swap');  
+  footer {
+    font-family: 'Zen Tokyo Zoo', cursive;
+    color: #ffffff;
+    text-align: right;
+    font-size: 25px;
+    margin-top: auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 70px;
+    font-family: 'Lilita One', cursive;
+    margin-bottom: 0;
+  }
+  
+  h2 {
+    color: rgb(255, 255, 255);
+    font-family: 'Mali';
+    text-align: center;
+  }
+   
+a {
+    margin-left: 10px;
+    text-decoration: none;
+}
+  
+  /* Center container Style */
+  .c {
+    background-color: #94d9cbb9;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    width:1100px;
+    padding: 20px;
+    color: Black;
+    font-family: 'Mali';
+    
+  }
+
+  html {
+    background-color: #94d5cb;
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: #ffffff 3px solid;
+    border-radius: 10px;
+  }
+
+  tr, td {
+    border: #ffffff 0.5px dotted;
+  }
+
+  body {
+    min-height: 97.5vh;
+    display: flex;
+    flex-direction: column;
+    margin: revert;
+  }
+
+  img {
+    opacity: 0.2;
+    width: auto;
+    height: 50px;
+  }
+  img.right {
+    float: right;
+  }
+
+  img.left {
+    float: left;
+    opacity: 0.1;
+  }
+
