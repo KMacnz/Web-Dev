@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript and DOM</title>
+
+        <style type="text/css">
+			body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size:
+			small; } .new { background-color:#F08080; }
+		</style>
+		<script type="text/javascript" src="domPrac.js"></script>
+    </head>
+    <body onload="makeTable()">
+        <h1>Javascript and DOM</h1>
+        <div>
+            <h2>a. Running Total Subtotals</h2>
+            <script>
+                var sum = 0;
+                for (var i = 1; i <= 10; i++) {
+                    sum += i;
+                    document.write("Subtotal: " + sum + "<br>");
+                }
+
+            </script>
+        </div>
+
+        <div>
+            <h2>b. Colour Buttons</h2>
+            <script>
+                function changeColor(color) {
+                    document.body.style.backgroundColor = color;
+                }
+
+                function createButton(color) {
+                    const button = document.createElement('button');
+                    button.textContent = color;
+                    button.addEventListener('click', function() {
+                    changeColor(color);
+                    });
+                    document.body.appendChild(button);
+                }
+
+                createButton('darkred');
+                createButton('pink');
+                createButton('lightblue');
+                createButton('khaki');
+                createButton('plum');
+            </script>
+        </div>
+
+        <div>
+            <h2>c. Adding New Elements</h2>
+            <table id="tbl" border="1"></table>
+            <form>
+			    <input type="button" value=" append a new row " onclick="appendRow()" />
+		    </form>
+        </div>
+
+        <div>
+            <h2>d. String Splitting</h2>
+            <button onclick="printWords()">Click to Enter String</button><br>
+
+            <div id="content"></div>
+            <script>
+                function printWords() {
+                    const inputString = prompt("Enter a string consisting of several words separated by single spaces:");
+                    const words = inputString.split(" ");
+                    const contentDiv = document.getElementById("content");
+                    words.forEach(word => {
+                    console.log(word);
+                    const wordNode = document.createTextNode(word);
+                    contentDiv.appendChild(wordNode);
+                    contentDiv.appendChild(document.createElement("br"));
+                    });
+                }
+            </script>
+        </div>
+
+        <div>
+            <h2>e. Simple email database</h2>
+
+            <p>
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput">
+                <br><label for="emailInput">Email:</label>
+                <input type="text" id="emailInput">
+                <br><button id="addButton">Add Entry</button>
+            </p>
+
+            <div id="content2"></div>
+            <script>
+                // Define a type to represent an email record
+                function EmailRecord(name, email) {
+                    this.name = name;
+                    this.email = email;
+                }
+
+                // Add a method to the prototype to print the record
+                EmailRecord.prototype.print = function() {
+                    var content2 = document.getElementById("content2");
+                    content2.innerHTML += this.name + " | " + this.email + "<br>";
+                }
+
+                // Define a type to represent an email database
+                function EmailDatabase() {
+                    this.records = [];
+                }
+
+                // Add a method to the prototype to add a record to the database
+                EmailDatabase.prototype.addRecord = function(record) {
+                    this.records.push(record);
+                }
+
+                // Add a method to the prototype to print all records in the database
+                EmailDatabase.prototype.printAllRecords = function() {
+                    var content2 = document.getElementById("content2");
+                    content2.innerHTML = "";
+                    for (var i = 0; i < this.records.length; i++) {
+                        this.records[i].print();
+                    }
+		        }   
+
+                // Create a database object
+                var database = new EmailDatabase();
+
+                // Create some initial records and add them to the database
+                var record1 = new EmailRecord("John Doe", "john.doe@example.com");
+                var record2 = new EmailRecord("Jane Smith", "jane.smith@example.com");
+                var record3 = new EmailRecord("Bob Johnson", "bob.johnson@example.com");
+                database.addRecord(record1);
+                database.addRecord(record2);
+                database.addRecord(record3);
+
+                // Print all records in the database
+                database.printAllRecords();
+
+                // Add an event listener to the button that prompts the user to add an entry to the database
+                var addButton = document.getElementById("addButton");
+                addButton.addEventListener("click", function() {
+                    var name = document.getElementById("nameInput").value;
+                    var email = document.getElementById("emailInput").value;
+                    var record = new EmailRecord(name, email);
+                    database.addRecord(record);
+                    database.printAllRecords();
+                    document.getElementById("nameInput").value = "";
+                    document.getElementById("emailInput").value = "";
+                });
+            </script>
+        </div>
+    </body>
+</html>
