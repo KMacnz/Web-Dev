@@ -1,0 +1,35 @@
+<h2>{{ courses[0].course_title }} Details</h2>
+<div><span>Course ID: </span>{{ courses[0].course_id }}</div>
+<div><span>Course Title: </span>{{ courses[0].course_title }}</div>
+<div><span>Semester: </span>{{ courses[0].semester }}</div>
+<div><span>Course Lecturer: </span>{{ courses[0].lecturer }}</div>
+<div><span>Course Period: </span>{{ courses[0].period }}</div>
+
+<div>
+  <label
+    >Course In View:
+    <input [(ngModel)]="courses[0].course_title" placeholder="name"
+  /></label>
+</div>
+
+<div>
+  <h2>My Course List</h2>
+  <ul class="courses">
+    <li *ngFor="let course of courses" (click)="onSelect(course)">
+      <span class="badge">{{ course.course_id }}</span>
+      {{ course.course_title }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedCourse">
+  <div><span>Course ID: </span>{{ selectedCourse.course_id }}</div>
+  <div><span>Period: </span>{{ selectedCourse.period }}</div>
+  <div><span>Course Lecturer: </span>{{ selectedCourse.lecturer }}</div>
+  <div>
+    <label>
+      Course Title:
+      <input [(ngModel)]="selectedCourse.course_title" placeholder="title" />
+    </label>
+  </div>
+</div>
