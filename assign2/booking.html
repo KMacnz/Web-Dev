@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- 
+    Name: Keanna Mackereth
+    Email: hvm1158@autuni.ac.nz
+    ID: 20119705
+ -->
+ 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="COMP721 Assignment 2">
+        <meta name="keywords" content="Web Development, Assignment 2">
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="booking.js"> </script>
+        <title>Web Dev Assignment 2</title>
+    </head>
+    <body preload>
+        <div class="tab">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Booking</a>
+            <a href="admin.html">Admin</a>
+        </div>
+
+        <div class="main">
+            <h1>Book a Taxi</h1>
+
+            <div class="bookCon" id="bookDiv">
+                <form>
+                    <h4><table>
+                        <tr>
+                            <td><label for="cname">Customer Name:</label></td>
+                            <td><input type="text" name="cname" placeholder="John Doe" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phone">Phone Number:</label></td>
+                            <td><input type="text" name="phone" placeholder="12345678912" pattern="[0-9]{10,12}" maxlength="12" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="unumber">Unit Number:</label></td>
+                            <td><input type="text" name="unumber"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="snumber">Street Number:</label></td>
+                            <td><input type="text" name="snumber" placeholder="55" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="stname">Street Name:</label></td>
+                            <td><input type="text" name="stname" placeholder="Wellesley Street East" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="sbname">Suburb:</label></td>
+                            <td><input type="text" name="sbname" placeholder="Auckland City"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="dsbname">Destination Suburb:</label></td>
+                            <td><input type="text" name="dsbname" placeholder="Manukau"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="date">Pick-Up Date:</label></td>
+                            <td><input id="date" type="date" name="date" value="date" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="time">Pick-Up Time:</label></td>
+                            <td><input id="time" type="time" name="time" required></td>
+                        </tr>
+                    </table></h4>
+
+                    <!-- This script is used to set the date and time to the current date and time -->
+                    <script>
+                        const today = new Date();
+                        document.getElementById("date").value = today.toISOString().substr(0, 10);
+                    
+                        // in yyyy-mm-dd format for the date input
+                        document.getElementById("time").value = today.getHours() + ":" + today.getMinutes();
+                    </script>
+
+                    <p style="text-align: center;">
+                        <!-- Button to submit the form and call the 'getBooking' function if it validates -->
+                        <input name="submit" type="button" onclick="
+                        if (validateForm(cname.value, phone.value, snumber.value, stname.value, date.value, time.value)) { 
+                            getBooking('booking.php','targetDiv', cname.value, phone.value, unumber.value, snumber.value, stname.value, sbname.value, dsbname.value, date.value, time.value) }"
+                        value="Book Taxi">
+                    </h4></p>
+                </form>
+                <i>*required information*</i>
+            </div>
+
+            <!-- Target div to display the booking confirmation message -->
+            <div id="targetDiv"> 
+               
+            </div> 
+        </div>
+    </body>
+
+    <footer>
+        <p>Keanna Mackereth 20119705<p>
+    </footer>
+</html>

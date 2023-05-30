@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 
+    Name: Keanna Mackereth
+    Email: hvm1158@autuni.ac.nz
+    ID: 20119705
+ -->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="COMP721 Assignment 2">
+        <meta name="keywords" content="Web Development, Assignment 2">
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="admin.js"> </script> <!-- Including an external JavaScript file -->
+        <title>Web Dev Assignment 2</title>
+    </head>
+    <body preload>
+        <div class="tab">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Booking</a>
+            <a href="admin.html">Admin</a>
+        </div>
+
+        <div class="main">
+            <h1>ADMIN</h1>
+
+            <div class="adminL" id="searcher">
+                <h2>Booking Request Search</h2>
+                <table>
+                    <tr>
+                      <td><label for="booking-search">Booking Reference Number:</label></td>
+                      <td><input type="text" id="bsearch" name="bsearch" maxlength="8" placeholder="BRN12345"></td>
+                    </tr>
+                </table>
+                <!-- The onclick event triggers a function to check the form before sending the request -->
+                <br><input type="button" name="sbutton" onclick="if (checkSearch(bsearch.value)) {searchBooking('admin.php','content', bsearch.value)}" value="Search"></input>
+            </div>
+
+            <!-- Two empty div elements with IDs "alert" and "content" to get content from php files -->
+            <div id="alert" class="alert"></div>
+            <div id="content" class="content" hidden></div>
+        </div>
+    </body>
+
+    <footer>
+        <p>Keanna Mackereth 20119705<p>
+    </footer>
+</html>

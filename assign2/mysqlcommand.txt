@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT EXISTS `bookingrequest` (
+        `bookingnumber` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
+        `cname` varchar(75) NOT NULL,
+        `phone` varchar(12) NOT NULL,
+        `unumber` varchar(4) DEFAULT NULL,
+        `snumber` varchar(4) NOT NULL,
+        `stname` varchar(100) NOT NULL,
+        `sbname` varchar(100) DEFAULT NULL,
+        `dsbname` varchar(100) DEFAULT NULL,
+        `date` date NOT NULL,
+        `time` time NOT NULL,
+        `bookingdatetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        `assignmentstatus` enum('assigned','unassigned') NOT NULL DEFAULT 'unassigned',
+        PRIMARY KEY (`bookingnumber`));
+
+INSERT INTO `bookingrequest`(`cname`, `phone`, `unumber`, `snumber`, `stname`, `sbname`, `dsbname`, `date`, `time`) VALUES ('$cName', '$phone', '$uNumber', '$sNumber', '$stName', '$sbName', '$dsbName', '$date', '$time')
+
+SELECT `bookingnumber` FROM bookingrequest WHERE `cname` LIKE '$cName' AND `date` LIKE '$date' AND TIME(`time`) = TIME('$time')
+
+SHOW TABLES LIKE 'bookingrequest'
+
+SELECT `bookingnumber`, `cname`, `phone`,  `sbname`, `dsbname`, `date`, `time`, `assignmentstatus` FROM `bookingrequest` WHERE `date` = '$date' AND `time` BETWEEN '$time' AND ADDTIME('$time', '02:00:00')
+
+SELECT `bookingnumber`, `cname`, `phone`,  `sbname`, `dsbname`, `date`, `time`, `assignmentstatus` FROM `bookingrequest` WHERE `bookingnumber` = '$bookingNumber'
+
+UPDATE `bookingrequest` SET `assignmentstatus` = 'assigned' WHERE `bookingnumber` = '$assignNum'
